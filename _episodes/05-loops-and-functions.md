@@ -1,7 +1,7 @@
 ---
 title: "Data workflows and automation"
-teaching: ??
-exercises: ??
+teaching: 45
+exercises: 15
 questions:
 - "How do we automate repetitive tasks?"
 objectives:
