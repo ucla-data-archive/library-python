@@ -1,7 +1,7 @@
 ---
 title: "Indexing, Slicing and Subsetting DataFrames in Python"
-teaching: ??
-exercises: 0
+teaching: 15   
+exercises: 10
 questions:
 - "How do we access different parts of a DataFrame?"
 objectives:
