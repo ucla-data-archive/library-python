@@ -1,7 +1,7 @@
 ---
 title: "Data Types and Formats"
-teaching: ??
-exercises: 0
+teaching: 10
+exercises: 10
 questions:
 - "How do we explore and better understand the structure and format of our data."
 objectives:
