@@ -1,7 +1,7 @@
 ---
 title: "Combining DataFrames with pandas"
-teaching: ??
-exercises: ??
+teaching: 30
+exercises: 15
 questions:
 - "How do we combine data from multiple sources?"
 objectives:
