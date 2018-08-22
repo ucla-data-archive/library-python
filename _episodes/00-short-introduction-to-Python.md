@@ -1,7 +1,7 @@
 ---
 title: "Python introduction"
-teaching: ??
-exercises: ??
+teaching: 30
+exercises: 15
 questions:
 - "What is Python?"
 objectives:
