@@ -1,7 +1,7 @@
 ---
 title: "Starting With Data"
-teaching: ??
-exercises: ??
+teaching: 25
+exercises: 15
 questions:
 - "How does Python deal with data tables?"
 objectives:
