@@ -16,7 +16,12 @@ objectives:
 keypoints:
 - "Core concepts in python: Python libraries, Pandas DataFrames, working with data."
 ---
+```{r setup, include=FALSE}
+library(reticulate)
+use_python('/home/tim/anaconda3/bin/')
+use_condaenv(condaenv = "lib-py")
 
+```
 
 # Working with Pandas DataFrames in Python
 
@@ -24,28 +29,15 @@ keypoints:
 
 For this lesso, we will use head count data provided by USC's Leavey library. 
 
-
-```python
+```{python}
 import pandas
 ```
 
 
-
-```python
+```{python}
 import sys
 print("hello")
-```
-
-```
-## hello
-```
-
-```python
 print(sys.path)
-```
-
-```
-## ['/home/tim/anaconda3/bin', '/home/tim/anaconda3/lib/python36.zip', '/home/tim/anaconda3/lib/python3.6', '/home/tim/anaconda3/lib/python3.6/lib-dynload', '/home/tim/anaconda3/lib/python3.6/site-packages', '/home/tim/R/x86_64-pc-linux-gnu-library/3.4/reticulate/python']
 ```
 
 ## Presentation of the DOAJ Articles data
