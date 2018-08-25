@@ -23,22 +23,24 @@ use_condaenv(condaenv = "lib-py")
 
 ```
 
+```{python setup-py, include=FALSE}
+import pandas as pd
+```
+
+
 # Working with Pandas DataFrames in Python
 
 ## Working with Library Head Count Data
 
-For this lesso, we will use head count data provided by USC's Leavey library. 
+For this lesson, we will use head count data provided by USC's Leavey Library. The data is available [here](https://drive.google.com/file/d/0B8w7idDSiacWLVBVenpKMUVQT242SUotM3RIZ3lUMGNOOTQ0/view?usp=sharing). You can download this to your working directory and put inside a `data/` folder (create that folder if it doesn't exist).
 
-```{python}
-import pandas
+This data is a 
+
+```{python, show-data, echo=FALSE}
+x = pd.read_csv('/home/tim/carpentries/lessons/library-python/data/SampleDataOctober2017HeadAndExitCounts.csv')
+x.head
 ```
 
-
-```{python}
-import sys
-print("hello")
-print(sys.path)
-```
 
 ## Presentation of the DOAJ Articles data
 
@@ -49,24 +51,6 @@ a folder called *data/*)
 This data set is a list of published articles. The dataset is stored as *.csv*
 (comma separated values) files: each row holds information for a single article,
 and the columns represent:
-
-| Column           | Description                        |
-|------------------|------------------------------------|
-| Title            | Title of the article               |
-| Authors          | Author (or authors)                |
-| DOI              | DOI                                |
-| URL              | URL                                |
-| Subjects         | List of subject key words          |
-| ISSNs            | ISSNs code                         |
-| Citation         | Citation information               |
-| LanguageId       | Language identifier                |
-| LicenceId        | License identifier                 |
-| Author_Count     | Number of authors of the article   |
-| First_Author     | Name of the first author           |
-| Citation_Count   | Number times it has been cited     |
-| Day              | Day of publication                 |
-| Month            | Month of publication               |
-| Year             | Year of publication                |
 
 ## About (Software) Libraries
 
@@ -86,11 +70,9 @@ a library, we use the syntax `import libraryName`. If we want to give the
 library a nickname to shorten the command, we can add `as nickNameHere`.  An
 example of importing the pandas library using the common nickname `pd` is below.
 
-
-~~~
+```{python}
 import pandas as pd
-~~~
-{: .source}
+```
 
 Each time we call a function that's in a library, we use the syntax
 `LibraryName.FunctionName`. Adding the library name with a `.` before the
