@@ -571,89 +571,88 @@ language_count.plot(kind='bar');
 > Start by transforming the grouped data (by `LicenceId` and `Month`) into an
 > unstacked layout, then create a stacked plot.
 >
+>> ## Solution to Summary Challenge
+>>
+>> First we group data by `Month` and by `LicenceId`, and then calculate a total for
+>> each `Month`.
+>>
+>> ~~~
+>> by_month_lic = articles_df.groupby(['Month','LicenceId'])
+>> month_lic_count = by_month_lic.size()
+>> ~~~
+>> {: .source}
+>>
+>> This calculates the number of articles for each `Month` and `LicenceId` as a table
+>>
+>> ~~~
+>> Month  LicenceId
+>> 1      1             50
+>> 2      1             96
+>> 3      1             79
+>> 4      1             69
+>>        2              7
+>> 5      1            107
+>> 6      1             91
+>> 7      1             94
+>> 8      1             90
+>>        2             13
+>> 9      1             77
+>> 10     1            104
+>> 11     1             97
+>>        2             10
+>>        3              6
+>> 12     4             11
+>> dtype: int64
+>> ~~~
+>> {: .output}
+>>
+>> Below we'll use `.unstack()` on our grouped data to figure out the total weight
+>> that each language contributed to each publisher.
+>>
+>> ~~~
+>> by_month_lic = articles_df.groupby(['Month','LicenceId'])
+>> month_lic_count = by_month_lic.size()
+>> mlc = month_lic_count.unstack()
+>> ~~~
+>> {: .source}
+>>
+>> The `unstack` function above will display the following output:
+>>
+>> ~~~
+>> LicenceId   1    2    3    4
+>> Month
+>> 1          50  NaN  NaN  NaN
+>> 2          96  NaN  NaN  NaN
+>> 3          79  NaN  NaN  NaN
+>> 4          69    7  NaN  NaN
+>> 5         107  NaN  NaN  NaN
+>> 6          91  NaN  NaN  NaN
+>> 7          94  NaN  NaN  NaN
+>> 8          90   13  NaN  NaN
+>> 9          77  NaN  NaN  NaN
+>> 10        104  NaN  NaN  NaN
+>> 11         97   10    6  NaN
+>> 12        NaN  NaN  NaN   11
+>> ~~~
+>> {: .output}
+>>
+>> Now, create a stacked bar plot with that data where the article count for each
+>> Month are stacked by License.
+>>
+>> Rather than display it as a table, we can plot the above data by stacking the
+>> values of each licence as follows:
+>>
+>> ~~~
+>> by_month_lic = articles_df.groupby(['Month','LicenceId'])
+>> month_lic_count = by_month_lic.size()
+>> mlc = month_lic_count.unstack()
+>>
+>> s_plot = mlc.plot(kind='bar',stacked=True,title="Total number of articles by Month and Licence")
+>> s_plot.set_ylabel("Licence Count")
+>> s_plot.set_xlabel("Month");
+>> ~~~
+>> {: .source}
+>>
+>> ![Stacked Bar Plot]({{ page.root }}/fig/stackedBar.png)
+>{:.solution}
 {:.challenge}
-
-> ## Solution to Summary Challenge
->
-> First we group data by `Month` and by `LicenceId`, and then calculate a total for
-> each `Month`.
->
-> ~~~
-> by_month_lic = articles_df.groupby(['Month','LicenceId'])
-> month_lic_count = by_month_lic.size()
-> ~~~
-> {: .source}
->
-> This calculates the number of articles for each `Month` and `LicenceId` as a table
->
-> ~~~
-> Month  LicenceId
-> 1      1             50
-> 2      1             96
-> 3      1             79
-> 4      1             69
->        2              7
-> 5      1            107
-> 6      1             91
-> 7      1             94
-> 8      1             90
->        2             13
-> 9      1             77
-> 10     1            104
-> 11     1             97
->        2             10
->        3              6
-> 12     4             11
-> dtype: int64
-> ~~~
-> {: .output}
->
-> Below we'll use `.unstack()` on our grouped data to figure out the total weight
-> that each language contributed to each publisher.
->
-> ~~~
-> by_month_lic = articles_df.groupby(['Month','LicenceId'])
-> month_lic_count = by_month_lic.size()
-> mlc = month_lic_count.unstack()
-> ~~~
-> {: .source}
->
-> The `unstack` function above will display the following output:
->
-> ~~~
-> LicenceId   1    2    3    4
-> Month
-> 1          50  NaN  NaN  NaN
-> 2          96  NaN  NaN  NaN
-> 3          79  NaN  NaN  NaN
-> 4          69    7  NaN  NaN
-> 5         107  NaN  NaN  NaN
-> 6          91  NaN  NaN  NaN
-> 7          94  NaN  NaN  NaN
-> 8          90   13  NaN  NaN
-> 9          77  NaN  NaN  NaN
-> 10        104  NaN  NaN  NaN
-> 11         97   10    6  NaN
-> 12        NaN  NaN  NaN   11
-> ~~~
-> {: .output}
->
-> Now, create a stacked bar plot with that data where the article count for each
-> Month are stacked by License.
->
-> Rather than display it as a table, we can plot the above data by stacking the
-> values of each licence as follows:
->
-> ~~~
-> by_month_lic = articles_df.groupby(['Month','LicenceId'])
-> month_lic_count = by_month_lic.size()
-> mlc = month_lic_count.unstack()
->
-> s_plot = mlc.plot(kind='bar',stacked=True,title="Total number of articles by Month and Licence")
-> s_plot.set_ylabel("Licence Count")
-> s_plot.set_xlabel("Month");
-> ~~~
-> {: .source}
->
-> ![Stacked Bar Plot]({{ page.root }}/fig/stackedBar.png)
-{:.solution}
