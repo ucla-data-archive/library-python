@@ -1,6 +1,6 @@
 ---
 title: "Starting With Data"
-teaching: ??
+teaching:
 exercises: ??
 questions:
 - "How does Python deal with data tables?"
@@ -20,9 +20,9 @@ keypoints:
 training: do-we-have-a-repo-of-python-training-resources ?
 ---
 
-# Working with Pandas DataFrames in Python
+## Working with Pandas DataFrames in Python
 
-## Presentation of the DOAJ Articles data
+### Presentation of the DOAJ Articles data
 
 For this lesson, we will be using Directory of Open Access Journals (DOAJ) article sample data, available on [FigShare](https://dx.doi.org/10.6084/m9.figshare.3409471). Download this zip
 and extract it on your working directory on a meaningful location (e.g. create
