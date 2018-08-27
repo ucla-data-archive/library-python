@@ -1,7 +1,7 @@
 ---
 title: "Plotting Your Data - Matplotlib"
-teaching: ??
-exercises: ??
+teaching: 45
+exercises: 15
 questions:
 - "How can you visualize your data?"
 objectives:
