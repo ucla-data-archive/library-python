@@ -35,24 +35,6 @@ Python programs are plain text files.
 * Notebook files have the extension .ipynb to distinguish them from plain-text Python programs.
   * Can export as “pure Python” to run from the command line.
 
-~~~
-{: .source}
-
-~~~
-4
-~~~
-{: .output}
-
-~~~
->>> print("Hello World")
-~~~
-{: .source}
-
-~~~
-Hello World
-~~~
-{: .output}
-
 ## Use the Jupyter Notebook for editing and running Python.
 
 *   The [Anaconda package manager][anaconda] is an automated way to install the Jupyter notebook.
@@ -63,11 +45,16 @@ Hello World
 ~~~
 $ jupyter notebook
 ~~~
-*   This will start a Jupyter Notebook server and open your default web browser. 
-*   The server runs locally on your machine only and does not use an internet connection.
-*   The server sends messages to your browser.
-*   The server does the work and the web browser renders the notebook.
-*   You can type code into the browser and see the result when the web page talks to the server.
+
+This will start a Jupyter Notebook server and open your default web browser.
+
+What happens is this:
+
+1.   The server runs locally on your machine only and does not use an internet connection.
+1.  The server sends messages to your browser.
+1.   The server does the work and the web browser renders the notebook.
+1.   You can type code into the browser and see the result when the web page talks to the server.
+
 *   This has several advantages:
     *   You can easily type, edit, and copy and paste blocks of code.
     *   Tab complete allows you to easily access the names of things you are using
@@ -82,7 +69,7 @@ $ jupyter notebook
 
 > ## How It's Stored
 >
-> *   The notebook file is stored in a format called JSON.
+> *   The notebook file is stored in a format called **JSON**.
 > *   Just like a webpage, what's saved looks different from what you see in your browser.
 > *   But this format allows Jupyter to mix source code, text, and images, all in one file.
 {: .callout}
@@ -95,67 +82,67 @@ $ jupyter notebook
 > ## Code vs. Text
 >
 > We often use the term "code" to mean
-> "the source code of software written in a language such as Python". 
+> "the source code of software written in a language such as Python".
 > A "code cell" in a Notebook is a cell that contains software;
 > a "text cell" is one that contains ordinary prose written for human beings.
 {: .callout}
 
-*   If you press "esc" and "return" alternately,
+*   If you press <kbd>esc</kbd> and <kbd>return</kbd> alternately,
     the outer border of your code cell will change from gray/blue to green.
     *   The difference in color is subtle.
 *   These are the command (gray) and edit (green) modes of your notebook.
-*   In command mode, pressing the "H" key will provide 
+*   In command mode, pressing the <kbd>H</kbd> key will provide
     a list of all the shortcut keys.
-*   Command mode alows you to edit notebook-level features, and edit mode changes the content of cells.
+*   Command mode allows you to edit notebook-level features, and edit mode changes the content of cells.
 *   When in command mode (esc/gray),
-    *   The "B" key will make a new cell below the currently selected cell.
-    *   The "A" key will make one above.
-    *   The "X" key will delete the current cell.
-    *   The "Z" key will undo your last cell deletion.
+    *   The <kbd>B</kbd> key will make a new cell below the currently selected cell.
+    *   The <kbd>A</kbd> key will make one above.
+    *   The <kbd>X</kbd> key will delete the current cell.
+    *   The <kbd>Z</kbd> key will undo your last cell deletion.
 *   All actions can be done using the menus,
     but there are lots of keyboard shortcuts to speed things up.
-*   If you remember the "esc" and "H" shortcut, you will be able to find out all the rest.
+*   If you remember the <kbd>esc</kbd> and <kbd>H</kbd> shortcut, you will be able to find out all the rest.
 
 > ## Command Vs. Edit
 >
 > In the Jupyter notebook page are you currently in command or edit mode?  
-> Switch between the modes. 
-> Use the shortcuts to generate a new cell. 
+> Switch between the modes.
+> Use the shortcuts to generate a new cell.
 > Use the shortcuts to delete a cell
 >
 > > ## Solution
 > >
-> > Command mode has a grey boarder and Edit mode has a green border. 
-> > Use "esc" and "Enter" to switch between modes. 
-> > You need to be in command mode (Hit "esc" if your cell is green).  Type "B" or "A".
-> > You need to be in command mode (Hit "esc" if your cell is green).  Type "X".
+> > Command mode has a grey boarder and Edit mode has a green border.
+> > Use <kbd>esc</kbd> and <kbd>enter</kbd> to switch between modes.
+> > You need to be in command mode (Hit <kbd>esc</kbd> if your cell is green).  Type <kbd>B</kbd> or <kbd>A</kbd>.
+> > You need to be in command mode (Hit <kbd>esc</kbd> if your cell is green).  Type <kbd>X</kbd>.
 > >
 > {: .solution}
 {: .challenge}
 
 ## Use the keyboard and mouse to select and edit cells.
 
-*   Pressing the "return" key turns the border green and engages edit mode,
+*   Pressing the <kbd>return</kbd> key turns the border green and engages edit mode,
     which allows you to type within the cell.
 *   Because we want to be able to write many lines of code in a single cell,
-    pressing the "return" key when in edit mode (green) moves the cursor to the next line in the cell just like in a text editor.
+    pressing the <kbd>return</kbd> key when in edit mode (green) moves the cursor to the next line in the cell just like in a text editor.
 *   We need some other way to tell the Notebook we want to run what's in the cell.
-*   Pressing the "shift" and the "enter" key together will execute the contents of the cell.
-*   Notice that the "return" and "shift" keys on the 
+*   Pressing the <kbd>shift</kbd> and the <kbd>enter</kbd> key together will execute the contents of the cell.
+*   Notice that the <kbd>return</kbd> and <kbd>shift</kbd> keys on the
     right of the keyboard are right next to each other.
 
 ## The Notebook will turn Markdown into pretty-printed documentation.
 
 *   Notebooks can also render [Markdown][markdown].
-    *   A simple plain-text format for writing lists, links, 
+    *   A simple plain-text format for writing lists, links,
         and other things that might go into a web page.
     *   Equivalently, a subset of HTML that looks like what you'd send in an old-fashioned email.
-*   Turn the current cell into a Markdown cell by entering 
-    the command mode (esc/gray) and press the "M" key.
+*   Turn the current cell into a Markdown cell by entering
+    the command mode (esc/gray) and press the <kbd>M</kbd> key.
 *   `In [ ]:` will disappear to show it is no longer a code cell
     and you will be able to write in Markdown.
 *   Turn the current cell into a Code cell
-    by entering the command mode (esc/gray) and press the "Y" key.
+    by entering the command mode (esc/gray) and press the <kbd>Y</kbd> key.
 
 ## Markdown does most of what HTML does.
 
@@ -193,7 +180,7 @@ $ jupyter notebook
   <div class="col-md-6" markdown="1">
 ~~~
 *  You can use indents
-	*  To create sublists 
+	*  To create sublists
 	*  of the same type
 *  Or sublists
 	1. Of different
@@ -279,10 +266,10 @@ Or use [named links][data_carpentry].
 >     *   Analyze.
 > 3.  Write up.
 > 4.  Publish.
-> 
+>
 > > ## Solution
 > >
-> > This challenge integrates both the numbered list and bullet list. 
+> > This challenge integrates both the numbered list and bullet list.
 > > Note that the bullet list is indented 2 spaces so that it is inline with the items of the numbered list.
 > > ~~~
 > > 1.  Get funding.
@@ -307,7 +294,7 @@ Or use [named links][data_carpentry].
 > 2 + 1
 > ~~~
 > {: .language-python}
-> 
+>
 > > ## Solution
 > >
 > > Python returns the output of the last calculation.
@@ -331,16 +318,16 @@ Or use [named links][data_carpentry].
 > ~~~
 > {: .language-python}
 >
-> And then run it with shift+return to be sure that it works as a code cell.
-> Now go back to the cell and use escape+M to switch the cell to Markdown
-> and "run" it with shift+return.
+> And then run it with <kbd>shift</kbd>+<kbd>return</kbd> to be sure that it works as a code cell.
+> Now go back to the cell and use <kbd>escape</kbd>+<kbd>M</kbd> to switch the cell to Markdown
+> and "run" it with <kbd>shift</kbd>+<kbd>return</kbd>.
 > What happened and how might this be useful?
-> 
+>
 > > ## Solution
 > >
 > > The Python code gets treated like markdown text.
 > > The lines appear as if they are part of one contiguous paragraph.
-> > This could be useful to temporarily turn on and off cells in notebooks that get used for multiple purposes. 
+> > This could be useful to temporarily turn on and off cells in notebooks that get used for multiple purposes.
 > > ~~~
 > > x = 6 * 7 + 12 print(x)
 > > ~~~
@@ -362,7 +349,7 @@ Or use [named links][data_carpentry].
 > (It's probably easier to copy and paste.)
 > What does it display?
 > What do you think the underscore, `_`, circumflex, `^`, and dollar sign, `$`, do?
-> 
+>
 > > ## Solution
 > >
 > > The notebook shows the equation as it would be rendered from latex equation syntax.
@@ -370,14 +357,13 @@ Or use [named links][data_carpentry].
 > > If you're not familiar with latex,  underscore, `_`, is used for subscripts and circumflex, `^`, is used for superscripts.
 > > A pair of curly braces, `{` and `}`, is used to group text together so that the statement `i=1` becomes the the subscript and `N` becomes the superscript.
 > > Similarly, `-i` is in curly braces to make the whole statement the superscript for `2`.
-> > `\sum` and `\approx` are latex commands for "sum over" and "approximate" symbols. 
+> > `\sum` and `\approx` are latex commands for "sum over" and "approximate" symbols.
 > {: .solution}
 {: .challenge}
 
 [anaconda]: https://docs.continuum.io/anaconda/install
 [jupyter]: http://jupyter.org/
 [markdown]: https://en.wikipedia.org/wiki/Markdown
-
 
 
 ## Introduction to Python built-in data types
@@ -403,7 +389,7 @@ To print out the value stored in a variable we can simply type the name of the
 variable into the interpreter:
 
 ~~~
->>> text
+text
 ~~~
 {: .source}
 
@@ -432,7 +418,7 @@ We can perform mathematical calculations in Python using the basic operators
  `+, -, /, *, %`:
 
 ~~~
->>> 2 + 2
+2 + 2
 ~~~
 {: .source}
 
@@ -442,7 +428,7 @@ We can perform mathematical calculations in Python using the basic operators
 {: .output}
 
 ~~~
->>> 6 * 7
+6 * 7
 ~~~
 {: .source}
 
@@ -452,7 +438,7 @@ We can perform mathematical calculations in Python using the basic operators
 {: .output}
 
 ~~~
->>> 2 ** 16  # power
+2 ** 16  # power
 ~~~
 {: .source}
 
@@ -462,7 +448,7 @@ We can perform mathematical calculations in Python using the basic operators
 {: .output}
 
 ~~~
->>> 13 % 5  # modulo
+13 % 5  # modulo
 ~~~
 {: .source}
 
@@ -476,7 +462,7 @@ We can also use comparison and logic operators:
 `and, or, not`
 
 ~~~
->>> 3 > 4
+3 > 4
 ~~~
 {: .source}
 
@@ -486,7 +472,7 @@ False
 {: .output}
 
 ~~~
->>> 6 != 7
+6 != 7
 ~~~
 {: .source}
 
@@ -496,7 +482,7 @@ True
 {: .output}
 
 ~~~
->>> 3 == 3
+3 == 3
 ~~~
 {: .source}
 
@@ -506,7 +492,7 @@ True
 {: .output}
 
 ~~~
->>> True and True
+True and True
 ~~~
 {: .source}
 
@@ -516,7 +502,7 @@ True
 {: .output}
 
 ~~~
->>> True or False
+True or False
 ~~~
 {: .source}
 
@@ -533,8 +519,8 @@ True
 elements. Each element can be accessed by an index, where the first element is 0, the second element is 1, and so on:
 
 ~~~
->>> numbers = [1,2,3]
->>> numbers[0]
+numbers = [1,2,3]
+numbers[0]
 ~~~
 {: .source}
 
@@ -566,8 +552,8 @@ discuss this in more detail later.
 To add elements to the end of a list, we can use the `append` method:
 
 ~~~
->>> numbers.append(4)
->>> print(numbers)
+numbers.append(4)
+print(numbers)
 ~~~
 {: .source}
 
@@ -601,7 +587,7 @@ usually we access them in a different way. For example `__add__` method is
 responsible for the `+` operator.
 
 ~~~
->>> dir(numbers)
+dir(numbers)
 ~~~
 {: .source}
 
@@ -658,8 +644,8 @@ a_list = [1,2,3]
 A **dictionary** is a container that holds pairs of objects - keys and values.
 
 ~~~
->>> translation = {"one" : 1, "two" : 2}
->>> translation["one"]
+translation = {"one" : 1, "two" : 2}
+translation["one"]
 ~~~
 {: .source}
 ~~~
@@ -673,8 +659,8 @@ in the dictionary. Keys can only have particular types - they have to be
 "hashable". Strings and numeric types are acceptable, but lists aren't.
 
 ~~~
->>> rev = {1 : "one", 2 : "two"}
->>> rev[1]
+rev = {1 : "one", 2 : "two"}
+rev[1]
 ~~~
 {: .source}
 ~~~
@@ -682,7 +668,7 @@ in the dictionary. Keys can only have particular types - they have to be
 ~~~
 {: .output}
 ~~~
->>> bad = {[1,2,3] : 3}
+bad = {[1,2,3] : 3}
 ~~~
 {: .source}
 ~~~
@@ -695,9 +681,9 @@ TypeError: unhashable type: 'list'
 To add an item to the dictionary we assign a value to a new key:
 
 ~~~
->>> rev = {1 : "one", 2 : "two"}
->>> rev[3] = "three"
->>> rev
+rev = {1 : "one", 2 : "two"}
+rev[3] = "three"
+rev
 ~~~
 {: .source}
 ~~~
@@ -709,9 +695,8 @@ Using `for` loops with dictionaries is a little more complicated. We can do this
 in two ways:
 
 ~~~
->>> for key, value in rev.items():
-...     print(key, "->", value)
-...
+for key, value in rev.items():
+     print(key, "->", value)
 ~~~
 {: .source}
 ~~~
@@ -724,9 +709,9 @@ in two ways:
 or
 
 ~~~
->>> for key in rev.keys():
-...     print(key, "->", rev[key])
-...
+for key in rev.keys():
+     print(key, "->", rev[key])
+
 ~~~
 {: .source}
 ~~~
@@ -747,7 +732,7 @@ First check what `rev` is right now (remember `rev` is the name of our dictionar
 
 Type:
 ~~~
->>> rev
+rev
 ~~~
 {: .source}
 
@@ -762,7 +747,7 @@ You should see the following output:
 Try to reassign the second value (in the *key value pair*) so that it no longer reads "two" but instead reads "apple-sauce".
 
 ~~~
->>> rev[2] = "apple-sauce"
+rev[2] = "apple-sauce"
 ~~~
 {: .source}
 

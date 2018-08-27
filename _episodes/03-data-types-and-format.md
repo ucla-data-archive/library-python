@@ -12,9 +12,6 @@ objectives:
 keypoints:
 - "Types of data: numeric (integers and floats), character, datetime."
 - "Missing data: how to detect and work with missing data."
-
-# training: http://swcarpentry.github.io/instructor-training
-training: do-we-have-a-repo-of-python-training-resources ?
 ---
 
 The format of individual columns and rows will impact analysis performed on a
