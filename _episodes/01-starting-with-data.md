@@ -136,18 +136,7 @@ import pandas as pd
 ~~~
 {: .source}
 
-Let's also import the [OS Library](https://docs.python.org/3/library/os.html).
-This library allows us to make sure we are in the correct working directory. If
-you are working in IPython or Jupyter Notebook, be sure to start the notebook in the
-workshop repository.  If you didn't do that you can always set the working
-directory using the code below.
-
 ~~~
-import os
-os.getcwd()
-# if this directory isn't right, use the command below to set the working directory
-os.chdir("YOURPathHere")
-
 # note that pd.read_csv is used because we imported pandas as pd
 pd.read_csv("articles.csv")
 ~~~
@@ -182,15 +171,12 @@ The above command yields the **output** below:
 ~~~
 {: .output}
 
-We can see that there were 1,001 rows parsed. Each row has 11
-columns. The first column is the index of the DataFrame. The index is used to
+We can see that there were 1,001 rows parsed and each row has 11
+columns. The first column is the index of the DataFrame, which is used to
 identify the position of the data, but it is not an actual column of the DataFrame.
 It looks like  the `read_csv` function in Pandas  read our file properly. However,
 we haven't saved any data to memory so we can work with it. We need to assign the
-DataFrame to a variable. Remember that a variable is a name for a value, such as `x`,
-or  `data`. We can create a new  object with a variable name by assigning a value to it using `=`.
-
-Let's call the imported survey data `articles_df`:
+DataFrame to a variable. Let's call the imported survey data `articles_df`:
 
 ~~~
 articles_df = pd.read_csv("articles.csv")
@@ -205,8 +191,6 @@ object by typing its name into the Python command prompt.
 articles_df
 ~~~
 {: .source}
-
-which prints contents like above.
 
 ## Manipulating our Articles data
 
@@ -225,20 +209,13 @@ articles_df.__class__
 ~~~
 {: .output}
 
-We can also enter `articles_df.dtypes` at our prompt to view the data type for each
+We can also run `articles_df.dtypes` in our notebook to view the data type for each
 column in our DataFrame.
-* `int64` represents numeric integer values (`int64` cells
-can not store decimals).
-* `object` represents strings (letters and numbers).
-* `float64`
-represents numbers with decimals.
 
 ~~~
 articles_df.dtypes
 ~~~
 {: .source}
-
-which returns:
 
 ~~~
 id                 int64
@@ -262,14 +239,18 @@ dtype: object
 ~~~
 {: .output}
 
+* `int64` represents numeric integer values (`int64` cells
+can not store decimals).
+* `object` represents strings (letters and numbers).
+* `float64`represents numbers with decimals.
+
 We'll talk a bit more about what the different data types mean later in [Data Types and Formats](/03-data-types-and-format/).
 
 ### Useful ways to view DataFrame objects in Python
 
-There are multiple methods that can be used to summarize and access the data
+There are multiple methods and attributes that can be used to summarize and access the data
 stored in DataFrames. Let's try out a few. Note that we call the method by using
-the object name *articles_df.method*. So `articles_df.columns` provides an index
-of all of the column names in our DataFrame.
+the object name *articles_df.method()* with parentheses. So `articles_df.heaad()` provides the first few rows of a DataFrame. An attribute doesn't require `()` because it's more like a fact the DataFrame knows about itself. So, `articles_df.columns` outputs the column names of the DataFrame.
 
 > ## Try out the methods below to see what they return.
 >
@@ -277,26 +258,19 @@ of all of the column names in our DataFrame.
 > 2. `articles_df.head()` - Also, what does `articles_df.head(15)` do?
 > 3. `articles_df.tail()`
 > 4. `articles_df.shape` - Take note of the output of the shape method. What format does it return the shape of the DataFrame in?
+> 5. `articles_df.ndim`
 {: .challenge}
-
-HINT: [More on tuples, here](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences).
 
 ## Calculating statistics from data in a Pandas DataFrame
 
 We've read our data into Python. Next, let's perform some quick summary
-statistics to learn more about the data that we're working with.
-We can perform summary stats quickly using groups. But
-first we need to figure out what we want to group by.
-
-Let's begin by exploring our data:
+statistics to learn more about the data that we're working with. Let's begin by exploring our data:
 
 ~~~
 # Look at the column names
 articles_df.columns.values
 ~~~
 {: .source}
-
-which **returns**:
 
 ~~~
 array(['id', 'Title', 'Authors', 'DOI', 'URL', 'Subjects', 'ISSNs',
@@ -313,22 +287,29 @@ pd.unique(articles_df['Month'])
 ~~~
 {: .source}
 
-which returns:
-
 ~~~
 array([11, 12,  8,  4, 10,  9,  7,  6,  5,  3,  2,  1])
 ~~~
 {: .source}
-Which show us that articles have been published in every month of the year.
+
+This show us that articles have been published in every month of the year.
 
 > ## Challenge
 >
 > Create a list of unique ISSNs found in the articles data.
 > Call it `publications` (Note: each publication has a unique ISSN).
 > How many unique publications (ISSNs) are there in the data?
+>
+>> ## solution
+>> ~~~
+>> pd.unique(articles_df['ISSNs'])
+>> len(pd.unique(articles_df['ISSNs']))
+>> ~~~
+>{: .solution}
 {: .challenge}
 
-# Groups in Pandas
+## Group By in Pandas
+
 Our DataFrame has a mixture of String and Numeric types. Some of the grouping
 operations work different for numeric types (e.g. calculating averages).
 
@@ -357,6 +338,15 @@ max        10.000000
 Name: Citation_Count, dtype: float64
 ~~~
 {: .output}
+
+Look at the 50, 70 and max values makes me want to look at the histogram for this variable. In pandas this is done by adding `.hist()` to the column.
+
+~~~
+articles_df['Citation_Count'].hist(grid=True, bins=20, rwidth=0.9, color='#607c8e')
+~~~
+{: .source}
+
+Looks skewed left.
 
 We can also extract one specific metric if we wish:
 
@@ -412,6 +402,8 @@ LanguageId
 4           12.000000  2015.0  
 ~~~
 {: .output}
+
+We can look at the groups by `articles_df.groupby('Team').groups'
 
 The `groupby` command is powerful in that it allows us to quickly generate
 summary stats.

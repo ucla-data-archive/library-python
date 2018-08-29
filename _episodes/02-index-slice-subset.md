@@ -1,6 +1,6 @@
 ---
 title: "Indexing, Slicing and Subsetting DataFrames in Python"
-teaching: 25   
+teaching: 35   
 exercises: 10
 questions:
 - "How do we access different parts of a DataFrame?"
@@ -68,16 +68,18 @@ order. This is useful when we need to reorganize our data.
 **NOTE:** If a column name is not contained in the DataFrame, an exception
 (error) will be raised.
 
-~~~
-# select the Authors and ISSNs (publishers) columns from the DataFrame
-articles_df[['Authors', 'ISSNs']]
-# what happens when you flip the order?
-articles_df[['ISSNs', 'Authors']]
-#what happens if you ask for a column that doesn't exist?
-articles_df['column_that_does_not_exist']
-~~~
-{: .source}
-
+> ## Exercise
+> What happens when you run:
+> ~~~
+> # select the Authors and ISSNs (publishers) columns from the DataFrame
+> articles_df[['Authors', 'ISSNs']]
+> # what happens when you flip the order?
+> articles_df[['ISSNs', 'Authors']]
+> #what happens if you ask for a column that doesn't exist?
+> articles_df['column_that_does_not_exist']
+> ~~~
+> {: .source}
+{: .challenge}
 
 ## Extracting Range based Subsets: Slicing
 
@@ -86,8 +88,11 @@ articles_df['column_that_does_not_exist']
 Let's remind ourselves that Python uses 0-based
 indexing. This means that the first element in an object is located at
 position 0.
+
 This is different from other tools like R and Matlab that index elements
 within objects starting at 1.
+
+For example, let's create a list:
 
 ~~~
 # Create a list of numbers
@@ -97,6 +102,7 @@ grades = [88, 72, 93, 94]
 
 ![indexing diagram]({{ page.root }}/fig/slicing-indexing.svg)
 ![slicing diagram]({{ page.root }}/fig/slicing-slicing.svg)
+
 
 > ## Challenge
 >
@@ -125,8 +131,8 @@ grades = [88, 72, 93, 94]
 
 Slicing using the `[]` operator selects a set of rows and/or columns from a
 DataFrame. To slice out a set of rows, you use the following syntax:
-`data[start:stop]`. When slicing in pandas the start bound is included in the
-output. The stop bound is one step BEYOND the row you want to select. So if you
+`data[start:stop]`. When slicing in pandas the start number is included in the
+output. For the stop number choose the number one step **BEYOND** the row you want to select. So if you
 want to select rows 0, 1 and 2 your code would look like this:
 
 ~~~
@@ -139,7 +145,7 @@ The stop bound in Python is different from what you might be used to in
 languages like Matlab and R.
 
 ~~~
-# select the first, second and third rows from the articles_df
+# select the 0th, first and second rows from the articles_df
 articles_df[0:3]
 # select the first 5 rows (rows 0,1,2,3,4)
 articles_df[:5]
@@ -189,6 +195,11 @@ articles_copy = articles_df.copy()
 We can select specific ranges of our data in both the row and column directions
 using either label or integer-based indexing.
 
+Data sci handbook: <https://jakevdp.github.io/PythonDataScienceHandbook/03.02-data-indexing-and-selection.html>
+
+* because of this potential confusion in the case of integer indexes, Pandas provides some special indexer attributes that explicitly expose certain indexing schemes.
+* These are not functional methods, but attributes that expose a particular slicing interface to the data in the DF.
+
 - `loc`: indexing via *labels* or *integers*
 - `iloc`: indexing via *integers*
 
@@ -200,8 +211,6 @@ start counting at 1), like this:
 articles_df.iloc[0:3, 1:4]
 ~~~
 {: .source}
-
-which gives:
 
 ~~~
                                                Title  \
@@ -230,7 +239,7 @@ Let's next explore some other ways to index and select subsets of data:
 ~~~
 # select all columns for rows of index values 0 and 10
 articles_df.loc[[0, 10], :]
-# what does this do?
+# what does this do? TODO:what?
 articles_df.loc[0, ['Authors', 'ISSNs', 'Title']]
 
 # What happens when you type the code below?
@@ -240,8 +249,8 @@ articles_df.loc[[0, 10, 35549], :]
 
 NOTE: Labels must be found in the DataFrame or you will get a *KeyError*. The
 start bound and the stop bound are **included**.  When using `loc`, integers
-*can* also be used, but they refer to the index label and not the position. Thus
-when you use `loc`, and select 1:4, you will get a different result than using
+*can* also be used, but they refer to the index label and not the position.
+* Thus when you use `loc`, and select 1:4, you will get a different result than using
 `iloc` to select rows 1:4.
 
 We can also select a specific data value according to the specific row and
@@ -253,8 +262,6 @@ column location within the data frame using the `iloc` function:
 articles_df.iloc[2,1]
 ~~~
 {: .source}
-
-which gives:
 
 ~~~
 'Metagenomic Analysis of Upwelling-Affected Brazilian Coastal Seawater Reveals Sequence Domains of Type I PKS and Modular NRPS'
@@ -281,6 +288,15 @@ the element that is 3 rows down and first column in the DataFrame.
 >     - How are the two commands different?
 {: .challenge}
 
+### Recap
+
+* `loc` works on labels in the index.
+* `iloc` works on the positions in the index (so it only takes integers).
+
+Not covered but also available
+
+* `ix` usually tries to behave like loc but falls back to behaving like iloc if the label is not in the index.
+
 ## Subsetting Data Using Criteria
 
 We can also select a subset of our data using criteria. For example, we can
@@ -290,8 +306,6 @@ select all rows that have a single author.
 articles_df[articles_df.Author_Count==1]
 ~~~
 {: .source}
-
-Which produces the following output:
 
 ~~~
       id                                              Title  \
@@ -318,14 +332,14 @@ articles_df[articles_df.Author_Count != 1]
 We can define sets of criteria too:
 
 ~~~
-articles_df[(articles_df.Month >= 7) & (articles_df.Year <= 9)]
+articles_df[(articles_df.Month >= 7) & (articles_df.Year <= 2015)]
 ~~~
 {: .source}
 
 # Python Syntax Cheat Sheet
 
 Use can use the syntax below when querying data from a DataFrame. Experiment
-with selecting various subsets of the "surveys" data.
+with selecting various subsets of the "surveys" data. write or paste into notebook.
 
 * Equals: `==`
 * Not equals: `!=`
@@ -336,7 +350,7 @@ with selecting various subsets of the "surveys" data.
 > ## Challenge Activities
 >
 > 1. Select a subset of rows in the `articles_df` DataFrame that contain articles
->    from at least 2 authors in Spanish (`LanguageId=3`). How many rows did you
+>    authored by 2 or more authors in Spanish (`LanguageId=3`). How many rows did you
 >    end up with? What did your neighbor get?
 > 2. You can use the `isin` command in python to query a DataFrame based upon a
 >    list of values as follows:
@@ -347,11 +361,31 @@ with selecting various subsets of the "surveys" data.
 > 4. The `~` symbol in Python can be used to return the OPPOSITE of the
 >    selection that you specify in python. It is equivalent to **is not in**.
 >    Write a query that selects all rows that are NOT in English (`LanguageId=1`).
+>
+> ~~~
+> articles_df[(articles_df.Author_Count >= 2) & (articles_df.LanguageId==3)] #1
+> articles_df[articles_df['ISSNs'].isin([listGoesHere])]  #2
+> articles_df[articles_df.LanguageId==1]
+> articles_df[~(articles_df.LanguageId==1)] #why
+> ~~~
+> {: . solution}
 {: .challenge}
+
+### using the NOT against multiple Conditions
+
+~~~
+raw_data = {'id': ['s1', 's2', 's1', 's4', 's2', 's5', 's4', 's2'],
+          'car': ['ford', 'bmw', 'ford', 'mazda', 'ford', 'bmw', 'audi', 'bmw']}
+df_a = pd.DataFrame(raw_data, columns= ['id', 'car'])
+values1 = ['s1', 's2']
+values2 = ['bmw', 'ford']
+df_a[(df_a['id'].isin(values1)) & (df_a['car'].isin(values2))]
+df_a[~((df_a['id'].isin(values1)) & (df_a['car'].isin(values2)))]
+~~~
 
 # Using Masks
 
-A mask can be useful to locate where a particular subset of values exist or
+A **mask** can be useful to locate where a particular subset of values exist or
 don't exist - for example,  NaN, or "Not a Number" values. To understand masks,
 we also need to understand *BOOLEAN* objects in python.
 
